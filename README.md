@@ -41,32 +41,21 @@ The `accelerate_config.yaml` is configured for:
 ### vLLM Server Setup and Evaluation
 
 1. **Start vLLM server**:
+
 ```bash
 bash run_vllm.sh
 ```
 
-The script configures:
-- Model: Qwen/Qwen3-8B
-- Port: 8000
-- Pipeline parallelism across 2 GPUs
-- bfloat16 precision
-- 95% GPU memory utilization
-
 2. **Verify server is running**:
 
-If you have run it on a node in your SLURM cluster, replace `localhost` with the identifier of that node, e.g., `box1203`.
+If you run vLLM on a node in your SLURM cluster, replace `localhost` with the identifier of that node, e.g., `box1203`.
 
 ```bash
 curl http://localhost:8000/health
 ```
 
 3. **Run evaluation with vLLM server**:
+
 ```bash
 python run_with_vllm.py --server http://localhost:8000 --model Qwen/Qwen3-8B
 ```
-
-This script:
-- Connects to the vLLM server
-- Loads the GSM8K benchmark
-- Runs evaluation on 32 samples (configurable)
-- Reports accuracy results
