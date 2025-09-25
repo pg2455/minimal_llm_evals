@@ -1,7 +1,4 @@
-echo "Running on node: $(hostname)"
-
-export APPTAINER_TMPDIR=/ptmp/$USER/tmp/
-module load apptainer/1.2.2
+#! /bin/bash
 
 ### download the model to avoid read-only errors
 # hf auth login 
